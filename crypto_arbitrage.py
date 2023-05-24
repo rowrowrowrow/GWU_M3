@@ -300,7 +300,7 @@ coinbase_sliced.loc[from_date:to_date].plot(legend=True, figsize=(15, 10), color
 # Be sure to include the parameters: legend, figure size, title, and color and label 
 # YOUR CODE HERE
 shorthand_for_month = '2018-03'
-bitstamp_sliced.loc[shorthand_for_month].plot(legend=True, figsize=(15, 10), title="bitstamp_sliced vs. coinbase_sliced", color="blue", label="bitstamp_sliced")
+bitstamp_sliced.loc[shorthand_for_month].plot(legend=True, figsize=(15, 10), title=f"bitstamp_sliced vs. coinbase_sliced {shorthand_for_month}", color="blue", label="bitstamp_sliced")
 coinbase_sliced.loc[shorthand_for_month].plot(legend=True, figsize=(15, 10), color="orange", label="coinbase_sliced")
 
 
@@ -439,6 +439,8 @@ arbitrage_spread_late.plot(kind='box')
 
 
 #initialize some variables for looping
+
+#List of dates from early to late
 list_of_relevant_dates = [
     shorthand_for_a_day,
     shorthand_for_a_day_2,
@@ -453,6 +455,8 @@ print(f"Relevant Dates: {list_of_relevant_dates}")
 
 # For the date early in the dataset, measure the arbitrage spread between the two exchanges
 # by subtracting the lower-priced exchange from the higher-priced one
+
+#Maintain a dictionary cache to store data on a per date basis
 arbitrage_spreads = {}
 
 for relevant_date in list_of_relevant_dates:
@@ -599,4 +603,4 @@ arbitrage_spreads[shorthand_for_a_day]['profit_on_profitable_days'].cumsum().plo
 
 # **Question:** After reviewing the profit information across each date from the different time periods, can you identify any patterns or trends?
 #     
-# **Answer:** For the days that I picked only the early date of 01-28 had any profitable arbitrage trades between bitmap and coinbase. The arbitrage opportunity quickly closed. If I had chosen an earlier day in the month, for each month, the middle date may also have had some profitable trades.
+# **Answer:** For the days that I picked only the early date of 01-28 had any profitable arbitrage trades between bitmap and coinbase. The arbitrage opportunity quickly closed from the beginning to the end of the period analyzed. If I had chosen an earlier day in the month, for each month, the middle date may also have had some profitable trades.
